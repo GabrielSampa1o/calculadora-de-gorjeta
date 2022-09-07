@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Text, View, Button } from "react-native";
 import styled from "styled-components/native";
 
@@ -63,12 +63,13 @@ export default () => {
 
     if(nBill) {
       setTip( pct/100 * nBill);
-    } else {
-      alert("Digite o valor da conta")
-    }
+    } 
   }
 
-  
+  useEffect(()=>{
+    calc();
+  }, [pct])
+
   return(
     <Page>
       <HeaderText>Calculadora de Gorjeta</HeaderText>
